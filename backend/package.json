@@ -1,0 +1,31 @@
+{
+  "name": "cloudops-incident-dashboard-backend",
+  "version": "1.0.0",
+  "description": "Backend Lambda functions for CloudOps Incident Dashboard",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:processor && npm run build:api",
+    "build:processor": "mkdir -p dist && cd src/processors && zip -r ../../dist/processor.zip .",
+    "build:api": "mkdir -p dist && cd src/api && zip -r ../../dist/api.zip .",
+    "deploy": "npm run build && npm run deploy:lambda",
+    "deploy:lambda": "aws lambda update-function-code --function-name $(aws lambda list-functions --query \"Functions[?contains(FunctionName, 'processor')].FunctionName\" --output text) --zip-file fileb://dist/processor.zip && aws lambda update-function-code --function-name $(aws lambda list-functions --query \"Functions[?contains(FunctionName, 'api')].FunctionName\" --output text) --zip-file fileb://dist/api.zip",
+    "test": "jest",
+    "lint": "eslint src/",
+    "dev": "nodemon src/api/index.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.456.0",
+    "@aws-sdk/lib-dynamodb": "^3.456.0",
+    "@aws-sdk/client-eventbridge": "^3.456.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.55.0",
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

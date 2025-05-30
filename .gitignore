@@ -1,0 +1,124 @@
+# =========================================
+# ENVIRONMENT & SECRETS - NEVER COMMIT
+# =========================================
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+.env.test
+
+# AWS Credentials & Config
+.aws/
+aws-exports.js
+amplify-exports.js
+
+# =========================================
+# TERRAFORM STATE & SECRETS
+# =========================================
+terraform.tfvars
+terraform.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Terraform state and plans
+infra/.terraform/
+infra/.terraform.lock.hcl
+infra/terraform.tfstate*
+infra/terraform.tfplan
+infra/*.tfplan
+infra/.terraform.tfstate.lock.info
+
+# Terraform backend configs
+backend.hcl
+backend.tf.json
+
+# =========================================
+# BUILD ARTIFACTS & DEPENDENCIES
+# =========================================
+
+# Backend artifacts
+backend/node_modules/
+backend/dist/
+backend/build/
+backend/*.zip
+backend/coverage/
+
+# Frontend artifacts  
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/coverage/
+frontend/.next/
+frontend/.nuxt/
+
+# Package zips
+*.zip
+deployment-packages/
+
+# =========================================
+# IDE & OS FILES
+# =========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================================
+# LOGS & DEBUGGING
+# =========================================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Debug files
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# =========================================
+# TESTING & COVERAGE
+# =========================================
+coverage/
+.nyc_output/
+.coverage/
+*.lcov
+.pytest_cache/
+test-results/
+e2e-results/
+
+# =========================================
+# TEMPORARY FILES
+# =========================================
+tmp/
+temp/
+.tmp/
+.cache/
+node_modules/
+
+# =========================================
+# DOCUMENTATION ARTIFACTS
+# =========================================
+# Keep screenshots but ignore if they contain sensitive data
+# Screenshots/
+docs/build/
+docs/.docusaurus/
+
+# =========================================
+# PERSONAL NOTES & GUIDES
+# =========================================
+personal-notes.md
+deployment-guide-personal.md
+troubleshooting-personal.md
+NOTES.md
+TODO.md
+PRD.md

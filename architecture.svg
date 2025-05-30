@@ -1,0 +1,212 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients for AWS services -->
+    <linearGradient id="awsOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9900;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6600;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="awsBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4285F4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1976D2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="awsGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+     refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF9900" />
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#232F3E">
+    CloudOps Incident Dashboard - AWS Serverless Architecture
+  </text>
+  
+  <!-- AWS Region Box -->
+  <rect x="50" y="80" width="1100" height="670" rx="10" fill="none" stroke="#FF9900" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="70" y="105" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FF9900">AWS us-east-1</text>
+  
+  <!-- Internet/Users -->
+  <g id="users">
+    <circle cx="150" cy="200" r="40" fill="#E3F2FD" stroke="#1976D2" stroke-width="2"/>
+    <text x="150" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1976D2">👥</text>
+    <text x="150" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#1976D2">DevOps</text>
+    <text x="150" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#1976D2">Engineers</text>
+    <text x="150" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#232F3E">Users</text>
+  </g>
+  
+  <!-- CloudFront -->
+  <g id="cloudfront">
+    <rect x="300" y="160" width="100" height="80" rx="8" fill="url(#awsOrange)" stroke="#FF6600" stroke-width="2"/>
+    <text x="350" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">☁️</text>
+    <text x="350" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CloudFront</text>
+    <text x="350" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CDN</text>
+  </g>
+  
+  <!-- S3 Bucket -->
+  <g id="s3">
+    <rect x="480" y="160" width="100" height="80" rx="8" fill="url(#awsGreen)" stroke="#2E7D32" stroke-width="2"/>
+    <text x="530" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">🪣</text>
+    <text x="530" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">S3 Bucket</text>
+    <text x="530" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Static Website</text>
+  </g>
+  
+  <!-- React App -->
+  <g id="react">
+    <rect x="660" y="160" width="100" height="80" rx="8" fill="#61DAFB" stroke="#21CBF3" stroke-width="2"/>
+    <text x="710" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#000">⚛️</text>
+    <text x="710" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#000">React App</text>
+    <text x="710" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#000">TypeScript</text>
+  </g>
+  
+  <!-- API Gateway -->
+  <g id="apigateway">
+    <rect x="480" y="300" width="100" height="80" rx="8" fill="url(#awsOrange)" stroke="#FF6600" stroke-width="2"/>
+    <text x="530" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">🌐</text>
+    <text x="530" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">API Gateway</text>
+    <text x="530" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">REST API</text>
+  </g>
+  
+  <!-- Cognito -->
+  <g id="cognito">
+    <rect x="300" y="300" width="100" height="80" rx="8" fill="url(#awsBlue)" stroke="#1976D2" stroke-width="2"/>
+    <text x="350" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">🔐</text>
+    <text x="350" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Cognito</text>
+    <text x="350" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Authentication</text>
+  </g>
+  
+  <!-- Lambda API -->
+  <g id="lambda-api">
+    <rect x="660" y="300" width="100" height="80" rx="8" fill="url(#awsOrange)" stroke="#FF6600" stroke-width="2"/>
+    <text x="710" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="white">λ</text>
+    <text x="710" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Lambda API</text>
+    <text x="710" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Node.js 18</text>
+  </g>
+  
+  <!-- DynamoDB -->
+  <g id="dynamodb">
+    <rect x="840" y="300" width="100" height="80" rx="8" fill="url(#awsBlue)" stroke="#1976D2" stroke-width="2"/>
+    <text x="890" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">🗃️</text>
+    <text x="890" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">DynamoDB</text>
+    <text x="890" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">NoSQL DB</text>
+  </g>
+  
+  <!-- CloudWatch -->
+  <g id="cloudwatch">
+    <rect x="300" y="500" width="100" height="80" rx="8" fill="url(#awsGreen)" stroke="#2E7D32" stroke-width="2"/>
+    <text x="350" y="525" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">📊</text>
+    <text x="350" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">CloudWatch</text>
+    <text x="350" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Alarms</text>
+  </g>
+  
+  <!-- EventBridge -->
+  <g id="eventbridge">
+    <rect x="480" y="500" width="100" height="80" rx="8" fill="url(#awsOrange)" stroke="#FF6600" stroke-width="2"/>
+    <text x="530" y="525" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">🎯</text>
+    <text x="530" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">EventBridge</text>
+    <text x="530" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Event Router</text>
+  </g>
+  
+  <!-- Lambda Processor -->
+  <g id="lambda-processor">
+    <rect x="660" y="500" width="100" height="80" rx="8" fill="url(#awsOrange)" stroke="#FF6600" stroke-width="2"/>
+    <text x="710" y="525" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="white">λ</text>
+    <text x="710" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Lambda</text>
+    <text x="710" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Processor</text>
+  </g>
+  
+  <!-- Slack Notifications -->
+  <g id="slack">
+    <rect x="840" y="500" width="100" height="80" rx="8" fill="#4A154B" stroke="#4A154B" stroke-width="2"/>
+    <text x="890" y="525" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">💬</text>
+    <text x="890" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Slack</text>
+    <text x="890" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Notifications</text>
+  </g>
+  
+  <!-- Data Flow Arrows -->
+  <!-- Users to CloudFront -->
+  <line x1="190" y1="200" x2="300" y2="200" stroke="#FF9900" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="240" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#FF9900">HTTPS</text>
+  
+  <!-- CloudFront to S3 -->
+  <line x1="400" y1="200" x2="480" y2="200" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="440" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#4CAF50">Origin</text>
+  
+  <!-- S3 to React -->
+  <line x1="580" y1="200" x2="660" y2="200" stroke="#61DAFB" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="620" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#61DAFB">Serve</text>
+  
+  <!-- React to API Gateway -->
+  <line x1="710" y1="240" x2="530" y2="300" stroke="#FF9900" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="620" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#FF9900">API Calls</text>
+  
+  <!-- API Gateway to Cognito -->
+  <line x1="480" y1="340" x2="400" y2="340" stroke="#4285F4" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="440" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#4285F4">Auth</text>
+  
+  <!-- API Gateway to Lambda API -->
+  <line x1="580" y1="340" x2="660" y2="340" stroke="#FF9900" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="620" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#FF9900">Invoke</text>
+  
+  <!-- Lambda API to DynamoDB -->
+  <line x1="760" y1="340" x2="840" y2="340" stroke="#4285F4" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="800" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#4285F4">CRUD</text>
+  
+  <!-- CloudWatch to EventBridge -->
+  <line x1="400" y1="540" x2="480" y2="540" stroke="#FF9900" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="440" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#FF9900">Events</text>
+  
+  <!-- EventBridge to Lambda Processor -->
+  <line x1="580" y1="540" x2="660" y2="540" stroke="#FF9900" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="620" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#FF9900">Trigger</text>
+  
+  <!-- Lambda Processor to DynamoDB -->
+  <line x1="710" y1="500" x2="890" y2="380" stroke="#4285F4" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="800" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#4285F4">Store</text>
+  
+  <!-- Lambda Processor to Slack -->
+  <line x1="760" y1="540" x2="840" y2="540" stroke="#4A154B" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="800" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#4A154B">Notify</text>
+  
+  <!-- Performance Metrics -->
+  <g id="metrics">
+    <rect x="1000" y="150" width="150" height="200" rx="5" fill="#F5F5F5" stroke="#CCCCCC" stroke-width="1"/>
+    <text x="1075" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#232F3E">Performance</text>
+    
+    <text x="1010" y="190" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">• API Response: &lt;150ms</text>
+    <text x="1010" y="210" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">• Dashboard Load: &lt;2s</text>
+    <text x="1010" y="230" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">• Availability: 99.9%</text>
+    <text x="1010" y="250" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">• Real-time: 30s polling</text>
+    <text x="1010" y="270" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">• Cost: $5-15/month</text>
+    <text x="1010" y="290" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">• Concurrent Users: 5</text>
+    <text x="1010" y="310" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">• Retention: 30 days</text>
+    <text x="1010" y="330" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">• Security: IAM + JWT</text>
+  </g>
+  
+  <!-- Legend -->
+  <g id="legend">
+    <text x="1075" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#232F3E">Service Legend</text>
+    
+    <rect x="1005" y="415" width="15" height="15" fill="url(#awsOrange)"/>
+    <text x="1025" y="427" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">AWS Compute</text>
+    
+    <rect x="1005" y="435" width="15" height="15" fill="url(#awsBlue)"/>
+    <text x="1025" y="447" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">AWS Storage/Auth</text>
+    
+    <rect x="1005" y="455" width="15" height="15" fill="url(#awsGreen)"/>
+    <text x="1025" y="467" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">AWS Monitoring</text>
+    
+    <rect x="1005" y="475" width="15" height="15" fill="#61DAFB"/>
+    <text x="1025" y="487" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">Frontend App</text>
+    
+    <rect x="1005" y="495" width="15" height="15" fill="#4A154B"/>
+    <text x="1025" y="507" font-family="Arial, sans-serif" font-size="10" fill="#232F3E">External Service</text>
+  </g>
+</svg>

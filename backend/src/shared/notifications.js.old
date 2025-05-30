@@ -1,0 +1,210 @@
+/**
+ * Notifications utility for sending alerts to various channels
+ * Currently supports Slack via EventBridge events
+ */
+
+import AWS from 'aws-sdk';
+import { logger } from './utils.js';
+
+const eventBridge = new AWS.EventBridge();
+
+/**
+ * Send notification for an incident
+ * @param {Object} notificationData - The notification data
+ * @param {string} notificationData.type - Type of notification
+ * @param {Object} notificationData.incident - Incident data
+ * @param {string} notificationData.timestamp - Timestamp of the event
+ */
+export async function sendNotification(notificationData) {
+  logger.info('Sending notification', { 
+    type: notificationData.type,
+    incidentId: notificationData.incident?.incidentId 
+  });
+
+  try {
+    // Send event to EventBridge for Slack notifications
+    await sendEventBridgeNotification(notificationData);
+    
+    // Future: Add other notification channels here (email, Teams, etc.)
+    
+  } catch (error) {
+    logger.error('Failed to send notification', error);
+    throw error;
+  }
+}
+
+/**
+ * Send notification via EventBridge
+ * This will trigger the Slack notifier Lambda if configured
+ */
+async function sendEventBridgeNotification(notificationData) {
+  const params = {
+    Entries: [
+      {
+        Source: 'custom.incident-system',
+        DetailType: notificationData.type,
+        Detail: JSON.stringify({
+          incident: notificationData.incident,
+          timestamp: notificationData.timestamp,
+          notificationType: notificationData.type
+        }),
+        Time: new Date(notificationData.timestamp)
+      }
+    ]
+  };
+
+  try {
+    const result = await eventBridge.putEvents(params).promise();
+    
+    if (result.FailedEntryCount > 0) {
+      logger.error('Some EventBridge entries failed', { 
+        failedEntries: result.Entries?.filter(entry => entry.ErrorCode) 
+      });
+      throw new Error(`Failed to send ${result.FailedEntryCount} notification events`);
+    }
+    
+    logger.info('EventBridge notification sent successfully', { 
+      eventId: result.Entries[0]?.EventId 
+    });
+    
+  } catch (error) {
+    logger.error('Failed to send EventBridge notification', error);
+    throw error;
+  }
+}
+
+/**
+ * Send direct Slack notification (alternative method)
+ * This bypasses EventBridge and calls Slack directly
+ */
+export async function sendDirectSlackNotification(webhookUrl, incident, type = 'Incident Notification') {
+  const https = await import('https');
+  const url = await import('url');
+  
+  const payload = {
+    username: 'CloudOps Dashboard',
+    icon_emoji: ':warning:',
+    text: `${getStatusEmoji(incident.status)} *${type}*`,
+    attachments: [
+      {
+        color: getSeverityColor(incident.severity),
+        fields: [
+          {
+            title: 'Incident ID',
+            value: incident.incidentId,
+            short: true
+          },
+          {
+            title: 'Severity',
+            value: incident.severity,
+            short: true
+          },
+          {
+            title: 'Status',
+            value: incident.status,
+            short: true
+          },
+          {
+            title: 'Service',
+            value: incident.service || 'Unknown',
+            short: true
+          },
+          {
+            title: 'Title',
+            value: incident.title,
+            short: false
+          },
+          {
+            title: 'Description',
+            value: incident.description || 'No description available',
+            short: false
+          }
+        ],
+        footer: 'CloudOps Incident Dashboard',
+        ts: Math.floor(Date.now() / 1000)
+      }
+    ]
+  };
+
+  return new Promise((resolve, reject) => {
+    const options = url.parse(webhookUrl);
+    options.method = 'POST';
+    options.headers = {
+      'Content-Type': 'application/json',
+    };
+    
+    const req = https.request(options, (res) => {
+      let data = '';
+      
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+      
+      res.on('end', () => {
+        if (res.statusCode === 200) {
+          resolve(data);
+        } else {
+          reject(new Error(`Slack API returned status ${res.statusCode}: ${data}`));
+        }
+      });
+    });
+    
+    req.on('error', (error) => {
+      reject(error);
+    });
+    
+    req.write(JSON.stringify(payload));
+    req.end();
+  });
+}
+
+/**
+ * Get status emoji for incident status
+ */
+function getStatusEmoji(status) {
+  const statusEmojis = {
+    'New': '🚨',
+    'Acknowledged': '👀',
+    'InProgress': '🔧',
+    'Resolved': '✅'
+  };
+  
+  return statusEmojis[status] || '❓';
+}
+
+/**
+ * Get color for incident severity
+ */
+function getSeverityColor(severity) {
+  const colorMap = {
+    'Critical': '#FF0000',
+    'High': '#FF6600', 
+    'Medium': '#FFCC00',
+    'Low': '#00FF00'
+  };
+  
+  return colorMap[severity] || '#808080';
+}
+
+/**
+ * Test notification functionality
+ */
+export async function testNotification() {
+  const testIncident = {
+    incidentId: `TEST-${Date.now()}`,
+    title: 'Test Notification',
+    description: 'This is a test notification from CloudOps Dashboard',
+    severity: 'Medium',
+    status: 'New',
+    service: 'test-service',
+    timestamp: new Date().toISOString()
+  };
+
+  await sendNotification({
+    type: 'Test Notification',
+    incident: testIncident,
+    timestamp: new Date().toISOString()
+  });
+
+  logger.info('Test notification sent', { incidentId: testIncident.incidentId });
+}
