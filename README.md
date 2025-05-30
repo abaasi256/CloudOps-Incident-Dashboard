@@ -2,7 +2,7 @@
 
 A production-grade, real-time incident monitoring dashboard built with AWS serverless architecture.
 
-![CloudOps Dashboard Demo](Screenshots/Screenshot-202025-05-30-20-202.52.59-20PM.png)
+![CloudOps Dashboard Demo](Screenshots/Screenshot-2025-05-30-2.45.26.png)
 
 ## 🌟 Features
 
@@ -16,15 +16,15 @@ A production-grade, real-time incident monitoring dashboard built with AWS serve
 ## 🚀 Live Demo
 
 ### Dashboard Interface
-![Incident Dashboard](Screenshots/Screenshot-202025-05-30-20-202.45.26-20PM.png)
+![Incident Dashboard](Screenshots/Screenshot-2025-05-30-2.45.26 PM.png)
 *Real-time incident monitoring with status filtering and severity categorization*
 
 ### Incident Management
-![Incident Details](Screenshots/Screenshot-202025-05-30-20-202.02.44-20PM.png)
+![Incident Details](Screenshots/Screenshot-2025-05-30-2.02.44 PM.png)
 *Complete incident lifecycle management with audit trail*
 
 ### Authentication Flow
-![Authentication](Screenshots/Screenshot-202025-05-30-20-202.02.07-20PM.png)
+![Authentication](Screenshots/Screenshot-2025-05-30-2.02.44.png)
 *Secure AWS Cognito authentication with email verification*
 
 ## ⚡ Quick Deploy
@@ -192,7 +192,7 @@ For issues or questions:
 
 ## 📈 Monitoring & Observability
 
-![Infrastructure Monitoring](Screenshots/Screenshot-202025-05-30-20-201.30.24-20PM.png)
+![Infrastructure Monitoring](Screenshots/Screenshot-2025-05-30-2.52.59.png)
 *CloudWatch dashboards provide comprehensive system monitoring*
 
 - Real-time performance metrics
