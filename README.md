@@ -2,7 +2,7 @@
 
 A production-grade, real-time incident monitoring dashboard built with AWS serverless architecture.
 
-![CloudOps Dashboard Demo](Screenshots/Screenshot%202025-05-30%20at%202.52.59%20PM.png)
+![CloudOps Dashboard Demo](Screenshots/Screenshot-202025-05-30-20-202.52.59-20PM.png)
 
 ## 🌟 Features
 
@@ -16,15 +16,15 @@ A production-grade, real-time incident monitoring dashboard built with AWS serve
 ## 🚀 Live Demo
 
 ### Dashboard Interface
-![Incident Dashboard](Screenshots/Screenshot%202025-05-30%20at%202.45.26%20PM.png)
+![Incident Dashboard](Screenshots/Screenshot-202025-05-30-20-202.45.26-20PM.png)
 *Real-time incident monitoring with status filtering and severity categorization*
 
 ### Incident Management
-![Incident Details](Screenshots/Screenshot%202025-05-30%20at%202.02.44%20PM.png)
+![Incident Details](Screenshots/Screenshot-202025-05-30-20-202.02.44-20PM.png)
 *Complete incident lifecycle management with audit trail*
 
 ### Authentication Flow
-![Authentication](Screenshots/Screenshot%202025-05-30%20at%202.02.07%20PM.png)
+![Authentication](Screenshots/Screenshot-202025-05-30-20-202.02.07-20PM.png)
 *Secure AWS Cognito authentication with email verification*
 
 ## ⚡ Quick Deploy
@@ -82,26 +82,6 @@ Create your account and start managing incidents!
 ## 🏗️ Architecture
 
 ![CloudOps Architecture](architecture.svg)
-
-### System Overview
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   CloudWatch    │    │   EventBridge    │    │     Lambda      │
-│     Alarms      │───▶│      Rules       │───▶│   Processor     │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                                                         │
-                                                         ▼
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│    React SPA    │    │   API Gateway    │    │   DynamoDB      │
-│   (CloudFront)  │◀──▶│      REST        │◀──▶│     Table       │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-         │                       │
-         ▼                       │
-┌─────────────────┐              │
-│   AWS Cognito   │              │
-│     Auth        │◀─────────────┘
-└─────────────────┘
-```
 
 ## 📁 Project Structure
 
@@ -212,7 +192,7 @@ For issues or questions:
 
 ## 📈 Monitoring & Observability
 
-![Infrastructure Monitoring](Screenshots/Screenshot%202025-05-30%20at%201.30.24%20PM.png)
+![Infrastructure Monitoring](Screenshots/Screenshot-202025-05-30-20-201.30.24-20PM.png)
 *CloudWatch dashboards provide comprehensive system monitoring*
 
 - Real-time performance metrics
